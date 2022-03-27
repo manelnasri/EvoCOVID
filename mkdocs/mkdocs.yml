@@ -1,0 +1,10 @@
+site_name: EVO COVID
+nav:
+- Accueil: index.md
+- Conception: design.md
+- Documentation technique: tech.md
+- Installation: install.md
+- Démonstration: demo.md
+- Difficultés rencontrées : diffi.md
+- Axes d'améliorations : axes.md
+use_directory_urls: false

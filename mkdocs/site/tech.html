@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Documentation technique - EVO COVID</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">EVO COVID</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="index.html" class="nav-link">Accueil</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="design.html" class="nav-link">Conception</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="tech.html" class="nav-link">Documentation technique</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="install.html" class="nav-link">Installation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="demo.html" class="nav-link">Démonstration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="diffi.html" class="nav-link">Difficultés rencontrées</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="axes.html" class="nav-link">Axes d'améliorations</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="design.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="install.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#documentation-technique" class="nav-link">Documentation technique</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#donnees-utilisees" class="nav-link">Données utilisées</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#structure-du-code-source" class="nav-link">Structure du code source</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="documentation-technique">Documentation technique</h1>
+<h2 id="donnees-utilisees">Données utilisées</h2>
+<p>Deux sources de données ont été utilisées : </p>
+<ul>
+<li>
+<p>Données hospitalières relatives à l'épidémie de COVID-19 <code>https://www.data.gouv.fr/fr/datasets/donnees-hospitalieres-relatives-a-lepidemie-de-covid-19/</code></p>
+</li>
+<li>
+<p>Données des rendez-vous pris dans des centres de vaccination contre la COVID-19 <code>https://www.data.gouv.fr/fr/datasets/donnees-des-rendez-vous-pris-dans-des-centres-de-vaccination-contre-la-covid-19/</code></p>
+</li>
+</ul>
+<p>Dans ces sources de données, les départements sont décrits seulement par leurs numéros. Pour des raisons érgonomiques (d'affichage) et pour faciliter l'utilisation de notre application, j'ai utilisé les noms des départements. Pour obtenir la liste complète des départements, j'ai utilisé le fichier CSV suivant : </p>
+<ul>
+<li><code>https://www.regions-et-departements.fr/fichiers/departements-francais.csv</code></li>
+</ul>
+<h2 id="structure-du-code-source">Structure du code source</h2>
+<p>Le code source de EVO COVID est organisé en quatres packages : </p>
+<h3 id="package-frulmiageevocovid">Package <code>fr.ul.miage.evocovid</code> :</h3>
+<p>Ce package contient les classes de la partie VUE du modèle MVC. Il contient pricipalement la classe <code>App</code> qui permet de construire l'interface graphique de EVO COVID. J'ai fait le choix d'utiliser plusieurs composants graphiques pour construire l'interface graphique de EVO COVID : </p>
+<ul>
+<li>
+<p><code>Border Pane</code> pour le conteneur principal de EVO COVID</p>
+</li>
+<li>
+<p><code>TabPane</code> pour les différents onglets (EVO COVID, EVO Décès, EVO Vaccination, EVO Statistiques et A propos)</p>
+</li>
+<li>
+<p><code>BarChart</code> et <code>PieChart</code> pour l'affichage des statistiques générale par département (Onglet EVO COVID). Le <code>BarChart</code>est un histogramme qui affiche les différents indicateurs sous forme de barres. Le <code>PieChart</code> est utilisé pour afficher les mêmes indicateurs mais sous forme de diagramme circulaire (plus compréhensible dans certains cas). </p>
+</li>
+<li>
+<p><code>LineChart</code> pour l'affichage des différentes courbes d'évolution du nombre de décès par département (Onglet EVO Décès) et les courbes d'évolution des injections vaccinales COVID19 (Onglet EVO Vaccinations).  </p>
+</li>
+<li>
+<p><code>ListView</code> pour l'affichage des listes des départements les plus touchés en terme de décès et du nombre d'injections vaccinales (Onglet EVO Statistiques). </p>
+</li>
+<li>
+<p><code>ChoiceBox</code> pour le choix du département, de la période de décès et pour choisir le type d'injection (Injection 1 ou 2 ou les deux).</p>
+</li>
+<li>
+<p><code>Label</code> pour afficher les valeurs des statistiques au niveau national (Onglet EVO Statistiques) et pour les affichages des informations textuelles. </p>
+</li>
+</ul>
+<h3 id="package-frulmiageevocovidmodel">Package <code>fr.ul.miage.evocovid.model</code> :</h3>
+<p>Ce package contient les classes du modèle à savoir la classe Département et la classe StatistiquesCovid. 
+La classe <code>Département</code> encapsule les informations relatives aux différents départements français (nom du département, numéro du département, population, ...). 
+la classe <code>StatistiquesCovid</code> encapsule les informations des statistiques globales et par département. 
+Voici une liste de quelques attributs de la classe <code>StatistiquesCovid</code> :  </p>
+<ul>
+<li>
+<p><code>nbDecesGlobal</code> : le nombre de décès global (au niveau national)</p>
+</li>
+<li>
+<p><code>nbHosGlobal</code> : le nombre d'hospitalisation global (au niveau national)</p>
+</li>
+<li>
+<p><code>nbReaGlobal</code> : le nombre de patient en réanimation global (au niveau national)</p>
+</li>
+<li>
+<p><code>nbVacGlobalInj1</code> : le nombre de RDV pour la première injection vaccinal du COVID 19. </p>
+</li>
+<li>
+<p><code>nbVacGlobalInj2</code> : le nombre de RDV pour la deuxième injection vaccinal du COVID 19. </p>
+</li>
+<li>
+<p><code>DecesParDep</code> : HashMap qui contient le nombre de décès par département </p>
+</li>
+<li>
+<p><code>ReaParDep</code> : HashMap qui contient le nombre de patients en réanimation par département </p>
+</li>
+<li>
+<p><code>HospitalisationParDep</code> : HashMap qui contient le nombre d'hospitalisation par département </p>
+</li>
+<li>
+<p><code>VacParDep</code> : HashMap qui contient le nombre de vaccination par département </p>
+</li>
+</ul>
+<p>Voici une liste des méthodes de la classe <code>StatistiquesCovid</code> : </p>
+<ul>
+<li>
+<p><code>getStatistiqueGlobalesParDep()</code> : une méthode pour chercher les statistiques globales (Onglet EVO Statistiques)</p>
+</li>
+<li>
+<p><code>getStatistiqueDeces()</code> : une méthode pour chercher le nombre de décès par département (Onglet EVO Décès)</p>
+</li>
+<li>
+<p><code>getStatistiqueVaccination()</code> : une méthode pour chercher le nombre d'injection vaccinal par département (Onglet EVO Vaccinations)</p>
+</li>
+</ul>
+<h3 id="package-frulmiageevocovidcontroller">Package <code>fr.ul.miage.evocovid.controller</code> :</h3>
+<p>Ce package contient un seule classe (<code>EvoCOVIDController.java</code>) qui joue le rôle de controlleur. Cette classe permet de gérer les différents évennements sur l'interface graphique (validation des différents bouttons, récupération des valeurs des différentes listes de choix, traçage des différentes courbes dans les différents composants JAVAFX comme le <code>LineChart</code>, le <code>PieChart</code> et le <code>BarChart</code>). </p>
+<ul>
+<li>Package <code>fr.ul.miage.evocovid.utils</code> : 
+Ce package contient une seule classe <code>Utils</code> qui définie des méthodes utilisées principalement pour le parsing des fichiers CSV et pour faire quelques opérations sur les hashMaps utilisés pour stocker les différentes statistiques. </li>
+</ul>
+<p>Voici la liste des méthodes de la classe  <code>Utils</code> : </p>
+<ul>
+<li>
+<p><code>public static HashMap&lt;String, Integer&gt; sortByKeys(HashMap&lt;String, Integer&gt; map)</code> : cette méthode permet de trier le contenu d'un HashMap en utilisant les clés. </p>
+</li>
+<li>
+<p><code>public static HashMap&lt;String, Integer&gt; sortByValue(HashMap&lt;String, Integer&gt; hash)</code> : cette méthode permet de trier le contenu d'un HashMap en utilisant les valeurs. </p>
+</li>
+<li>
+<p><code>public static  CSVParser buildCVSParser(String filename, char delimeter)</code> : cette méthode permet de traiter les fichiers CSV. </p>
+</li>
+<li>
+<p><code>String getMonthForInt(int m)</code> : cette méthode retourne le nom du mois en utilisant le numéro du mois. </p>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

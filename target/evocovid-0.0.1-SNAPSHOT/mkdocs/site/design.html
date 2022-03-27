@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Conception - EVO COVID</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">EVO COVID</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="index.html" class="nav-link">Accueil</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="design.html" class="nav-link">Conception</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="tech.html" class="nav-link">Documentation technique</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="install.html" class="nav-link">Installation</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="demo.html" class="nav-link">Démonstration</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="diffi.html" class="nav-link">Difficultés rencontrées</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="axes.html" class="nav-link">Axes d'améliorations</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="index.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="tech.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#conception" class="nav-link">Conception</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#diagramme-de-classes" class="nav-link">Diagramme de classes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#architecture-choisie-modele-mvc" class="nav-link">Architecture choisie : Modèle MVC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="conception">Conception</h1>
+<p>L'étape de conception est une étape importante pour la réussite d'un projet. Nous vous présentons ici le diagramme de classe correspondant à notre solution EVO Covid pour le suivi et l'analyse des décès et des vaccinations liées à la pandémie COVID 19. </p>
+<h2 id="diagramme-de-classes">Diagramme de classes</h2>
+<p>Voici le diagramme de classe global de EVO COVID : 
+<img alt="Diag de classe" src="diag.png" /></p>
+<p>Les classes principales sont détaillées ci dessous : </p>
+<ul>
+<li>
+<p>Classe <code>Département</code> : 
+Cette classe définie les informations relatives aux différents départements français. Cette classe est utilisée principalement pour chercher les noms des départements en utilisant le numéro du département et inversement. </p>
+</li>
+<li>
+<p>Classe <code>StatistiquesCovid</code> : 
+Cette classe définie les différentes statistiques globales (décès, hospitalisation, vaccinations et réanimation) par département. Elle contient aussi les informations sur les départements les plus touchés en terme de décès et en terme de vaccinatio (injection 1 et 2). </p>
+</li>
+<li>
+<p>Classe <code>EvoCOVIDController</code> : Cette classe permet de gérer les différents évennements sur l'interface graphique (validation des différents bouttons, récupération des valeurs des différentes listes de choix, traçage des différentes courbes dans les différents composants JAVAFX comme le <code>LineChart</code>, le <code>PieChart</code> et le <code>BarChart</code>). </p>
+</li>
+<li>
+<p>Classe <code>Utils</code> : Cette classe définie des méthodes utilisées principalement pour le parsing des fichiers CSV et pour faire quelques opérations sur les <code>HashMaps</code> utilisés pour stocker les différentes statistiques. </p>
+</li>
+</ul>
+<h2 id="architecture-choisie-modele-mvc">Architecture choisie : Modèle MVC</h2>
+<p>Pour EVO COVID, j'ai choisi d'utiliser le modèle/pattern MVC (Model-View-Controller) qui permet de bien organiser le code source. Le but de MVC est justement de séparer la logique du code en trois parties que l'on retrouve dans des fichiers distincts.</p>
+<ul>
+<li>
+<p>Modèle : cette partie gère les données de EVO COVID (données des décès et données des vaccinations). Le rôle du modèle de EVO COVID est d'aller récupérer les informations « brutes » dans les fichiers CSV, de les organiser et de les assembler pour qu'elles puissent ensuite être traitées par le contrôleur. </p>
+</li>
+<li>
+<p>Vue : cette partie se concentre sur l'affichage. J'ai fait le choix d'utiliser la technologie JAVAFX popur construire l'interface de EVO COVID. </p>
+</li>
+<li>
+<p>Contrôleur : cette partie gère la logique du code qui fait les calculs. C'est en quelque sorte l'intermédiaire entre le modèle et la vue : le contrôleur va demander au modèle les données, les analyser, prendre des décisions et renvoyer le texte à afficher à la vue. </p>
+</li>
+</ul>
+<p>Techniquement, chaque partie (Modèle, Vue et Contrôleur) est un package JAVA séparé. Pour plus de détail sur le code source, veuillez consulter la page <a href="tech.html">suivante</a>. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
